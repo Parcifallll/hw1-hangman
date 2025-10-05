@@ -15,7 +15,7 @@ public class GameVisualizerTest {
     @BeforeEach
     public void setUp() {
         game = new Game("слово", "*****");
-        hangman = new Hangman(6);
+        hangman = new Hangman();
         visualizer = new GameVisualizer(game, hangman);
     }
 

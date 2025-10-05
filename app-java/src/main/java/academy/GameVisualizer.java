@@ -36,10 +36,10 @@ public class GameVisualizer {
     }
 
     public void start() {
-        System.out.println("У вас есть " + hangman.getAttemptsLeft() + " попыток. Удачи!");
-        while (!isGuessed(game.getGuessedWord()) && !hangman.isGameOver()) {
+        System.out.println("У вас есть " + game.getAttemptsLeft() + " попыток. Удачи!");
+        while (!isGuessed(game.getGuessedWord()) && !game.isGameOver()) {
             System.out.println("Текущее состояние слова: " + new String(game.getGuessedWord()));
-            hangman.displayHangman();
+            hangman.displayHangman(game.getAttemptsLeft());
 
             System.out.print("Введите букву: ");
             String letter = letterValidation();
@@ -49,16 +49,14 @@ public class GameVisualizer {
             if (correctGuess) {
                 System.out.println("Вы угадали букву!");
             } else {
-                hangman.wrongGuess();
-                System.out.println("Неверно! Осталось попыток: " + hangman.getAttemptsLeft());
+                game.wrongGuess();
+                System.out.println("Неверно! Осталось попыток: " + game.getAttemptsLeft());
             }
         }
-
+        hangman.displayHangman(game.getAttemptsLeft());
         if (isGuessed(game.getGuessedWord())) {
-            hangman.displayHangman();
             System.out.println("Поздравляем! Вы угадали слово: " + new String(game.getGuessedWord()));
         } else {
-            hangman.displayHangman();
             System.out.println("Вы проиграли! Загаданное слово: " + game.getHiddenWord());
         }
     }

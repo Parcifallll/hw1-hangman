@@ -1,8 +1,6 @@
 package academy;
 
 public class Hangman {
-    private int wrongAttempts;
-    private final int maxAttempts;
     private static final String[] HANGMAN = {
         // 0 mistakes
         """
@@ -76,24 +74,10 @@ public class Hangman {
         """
     };
 
-    public Hangman(int maxAttempts) {
-        this.maxAttempts = maxAttempts;
-        this.wrongAttempts = 0;
+
+    public void displayHangman(int attemptsLeft) {
+        System.out.println(HANGMAN[HANGMAN.length - attemptsLeft - 1]);
     }
 
-    public void wrongGuess() {
-        wrongAttempts++;
-    }
 
-    public int getAttemptsLeft(){
-        return maxAttempts - wrongAttempts;
-    }
-
-    public void displayHangman() {
-        System.out.println(HANGMAN[wrongAttempts]);
-    }
-
-    public boolean isGameOver() { // loss
-        return wrongAttempts >= maxAttempts;
-    }
 }
