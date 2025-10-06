@@ -8,8 +8,8 @@ public class Game {
     private int attemptsLeft = 6;
 
     public Game(String hiddenWord, String guessedWord) {
-        this.hiddenWord = hiddenWord.toLowerCase();
-        this.guessedWord = guessedWord.toLowerCase().toCharArray();
+        this.hiddenWord = hiddenWord;
+        this.guessedWord = guessedWord.toCharArray();
     }
 
     public Game() {
@@ -52,7 +52,7 @@ public class Game {
         StringBuilder result = new StringBuilder();
         for (int i = 0; i < hiddenWord.length(); i++) {
             char hiddenChar = hiddenWord.charAt(i);
-            if (new String(guessedWord).contains(String.valueOf(hiddenChar))) {
+            if (new String(guessedWord).contains(String.valueOf(hiddenChar).toLowerCase())) {
                 result.append(hiddenChar);
             } else {
                 result.append('*');
